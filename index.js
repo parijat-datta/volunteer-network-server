@@ -55,7 +55,7 @@ client.connect(err => {
   const tasks=req.body;
   taskCollection.insertMany(tasks)
   .then(result =>{
-    console.log(result);
+    res.send(result);
   })
 
   })
