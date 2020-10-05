@@ -3,6 +3,8 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const ObjectId=require('mongodb').ObjectId
+const path = require('path');
+const publicPath = path.join(__dirname, '..', 'public');
 
 require('dotenv').config()
 const port = 5000
@@ -11,6 +13,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 
+app.use(express.static(publicPath));
 app.get('/', (req, res) => {
   res.send(`${process.env.DB_User}`)
 })
@@ -55,7 +58,7 @@ client.connect(err => {
   const tasks=req.body;
   taskCollection.insertMany(tasks)
   .then(result =>{
-    res.send(result);
+    console.log(result);
   })
 
   })
@@ -90,7 +93,7 @@ client.connect(err => {
      const task=req.body;
      collection.insertOne(task)
      .then(result=>{
-         
+         console.log("Task Added")
          res.redirect("http://localhost:3000/taskList")
         
      })
@@ -104,7 +107,7 @@ client.connect(err => {
     const task=req.body;
     taskCollection.insertOne(task)
     .then(result=>{
-        
+        console.log("Task Added")
         res.send(result.insertedCount>0)
        
     })
