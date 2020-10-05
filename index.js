@@ -84,15 +84,7 @@ client.connect(err => {
     
       })
 
-//   app.get("/personTasks",(req,res)=>{
-//   collection.find({})
-//   .toArray((err,documents) => {
-//       res.send(documents);
-//   })
 
-//   })
-  
-  
   
   app.post("/addTask",(req,res)=>{
      const task=req.body;
@@ -128,4 +120,4 @@ client.connect(err => {
 
 
 
-app.listen(port)
+app.listen(process.env.PORT || port)
