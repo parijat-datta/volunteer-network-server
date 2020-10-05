@@ -3,8 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const ObjectId=require('mongodb').ObjectId
-const path = require('path');
-const publicPath = path.join(__dirname, '..', 'public');
+
 
 require('dotenv').config()
 const port = 5000
@@ -13,7 +12,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 
-app.use(express.static(publicPath));
 app.get('/', (req, res) => {
   res.send(`${process.env.DB_User}`)
 })
