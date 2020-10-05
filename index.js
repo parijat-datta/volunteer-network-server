@@ -90,7 +90,7 @@ client.connect(err => {
      const task=req.body;
      collection.insertOne(task)
      .then(result=>{
-         console.log("Task Added")
+         
          res.redirect("http://localhost:3000/taskList")
         
      })
@@ -104,7 +104,7 @@ client.connect(err => {
     const task=req.body;
     taskCollection.insertOne(task)
     .then(result=>{
-        console.log("Task Added")
+        
         res.send(result.insertedCount>0)
        
     })
